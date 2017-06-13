@@ -15,6 +15,16 @@
 
 #Log file
 log.txt
+config.xml
+CommandLine.xml
+
+#Build files
+*.exe
+*.exe.manifest
+*.application
+*.vshost.exe
+*.vshost.exe.manifest
+*.vshost.exe.config
 
 # Build results
 #[Dd]ebug/

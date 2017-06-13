@@ -89,6 +89,10 @@ namespace FTPZipAndUpload
                 return;
             }
 
+            //Checks if the Temporary Directory Exist, or create it
+            if (!Directory.Exists(zipDestinationFolder))
+                Directory.CreateDirectory(zipDestinationFolder);
+
             //Gets the folders to process from XML file
             ProcessQueue folderQueue = new ProcessQueue(configurationFile);
 
