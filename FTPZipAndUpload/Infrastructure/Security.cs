@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace FTPZipAndUpload
+namespace FTPZipAndUpload.Infrastructure
 {
     /// <summary>
     /// Security Functions
@@ -14,7 +12,8 @@ namespace FTPZipAndUpload
     class Security
     {
         //Change this if you send code to someone else.
-        private const string _encryptionKey = "Uby6tBKC0SpZ35PRMNukLiTVhjKUOp2NJPBHa2r7bQl6oG8DWnrfs8n28b8fBGjhKpHJL3I7nHfccoTSSASsuO5an9qhjl3HqJmuBBgsmvru0kSTALA09BcVJvKlTmTOb9nJVWx7XoALkkzrFgba3uuA8f4ECzjpQlzv45Tg8ZnCXAu846XZ3ufw3eh9QxKEMAsV5XrUCfFMChOR9HaMMXHWNpjVAYS7Je87WJ2BU0QFU1GB82V9T0jkRxxL04tB";
+        private static string _encryptionKey =
+            "Uby6tBKC0SpZ35PRMNukLiTVhjKUOp2NJPBHa2r7bQl6oG8DWnrfs8n28b8fBGjhKpHJL3I7nHfccoTSSASsuO5an9qhjl3HqJmuBBgsmvru0kSTALA09BcVJvKlTmTOb9nJVWx7XoALkkzrFgba3uuA8f4ECzjpQlzv45Tg8ZnCXAu846XZ3ufw3eh9QxKEMAsV5XrUCfFMChOR9HaMMXHWNpjVAYS7Je87WJ2BU0QFU1GB82V9T0jkRxxL04tB";
 
         public static string EncryptText(string input)
         {

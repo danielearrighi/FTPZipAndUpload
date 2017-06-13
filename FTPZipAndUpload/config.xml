@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfQueueItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <QueueItem>
+    <FtpServer>127.0.0.1</FtpServer>
+    <FtpDirectory>Test/</FtpDirectory>
+    <FtpUser>mail@something.net</FtpUser>
+    <FtpPassword>ENCRYPTEDPASSWORD</FtpPassword>
+    <Directory>C:\wwwroot\</Directory>
+    <ProcessSubDirectories>true</ProcessSubDirectories>
+    <AppendDateTime>true</AppendDateTime>
+    <DeleteFilesWhenFinished>true</DeleteFilesWhenFinished>
+    <CleanRemote>30</CleanRemote>
+    <ExcludedFolders>
+      <string>C:\wwwroot\folder.com</string>
+      <string>C:\wwwroot\folder.it</string>
+    </ExcludedFolders>
+  </QueueItem>
+</ArrayOfQueueItem>
