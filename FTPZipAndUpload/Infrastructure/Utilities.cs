@@ -12,7 +12,8 @@ namespace FTPZipAndUpload.Infrastructure
         /// <param name="Input"></param>
         public static void WriteToFile(string Input)
         {
-            using (FileStream fs = new FileStream("log.txt", FileMode.Append, FileAccess.Write))
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "log.txt";
+            using (FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write))
             using (StreamWriter sw = new StreamWriter(fs))
             {
                 sw.WriteLine(Input);

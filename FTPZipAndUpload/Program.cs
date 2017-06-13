@@ -45,7 +45,7 @@ namespace FTPZipAndUpload
             string configurationFile = AppDomain.CurrentDomain.BaseDirectory + "config.xml";
 
             //Verbosity
-            bool verbose = true;
+            bool verbose = false;
 
             /******************** 
             * OVERWRITE DEFAULT VALUES WITH COMMAND ARGUMENTS IF PRESENT
@@ -81,7 +81,7 @@ namespace FTPZipAndUpload
             //Checks if configuration files exist
             if (!File.Exists(configurationFile))
             {
-                Utilities.WriteToFile(string.Format("{0}: Missing Config File", DateTime.Now));
+                Utilities.WriteToFile(string.Format("Missing Configuration File At {0}", configurationFile));
 
                 Console.WriteLine("Missing Configuration File At {0}", configurationFile);
                 Console.WriteLine("Press any key to exit...");
@@ -111,6 +111,7 @@ namespace FTPZipAndUpload
                 //Password check
                 if (String.IsNullOrEmpty(queue.FtpPassword))
                 {
+                    Utilities.WriteToFile("Error. Missing password (Encrypted) for FTP connection");
                     Console.WriteLine("Error. Missing password (Encrypted) for FTP connection");
                     continue;
                 }
@@ -122,6 +123,7 @@ namespace FTPZipAndUpload
                     }
                     catch
                     {
+                        Utilities.WriteToFile("Error. Wrong password format");
                         Console.WriteLine("Error. Wrong password format");
                         continue;
                     }

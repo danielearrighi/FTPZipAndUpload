@@ -17,7 +17,7 @@ namespace FTPZipAndUpload.Domain
         [Option('h', "help", Required = false, HelpText = "Get help: -h")]
         public bool Help { get; set; }
 
-        [Option('b', "verbose", Required = false, DefaultValue = true, HelpText = "Verbose Output: -b")]
+        [Option('b', "verbose", Required = false, DefaultValue = false, HelpText = "Verbose Output: -b")]
         public bool Verbose { get; set; }
 
         [Option('p', "password", Required = false, HelpText = "Ouputs the encrypted password: -p 'Password' -> [Encrypted Password Key]")]
