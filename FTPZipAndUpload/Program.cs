@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using CommandLine;
-using Ionic.Zip;
-using Ionic.Zlib;
-using WinSCP;
-using System.Collections.Specialized;
-using System.Linq;
 using FTPZipAndUpload.Domain;
 using FTPZipAndUpload.Infrastructure;
 using FTPZipAndUpload.Services;
@@ -64,7 +58,7 @@ namespace FTPZipAndUpload
                 if (!string.IsNullOrEmpty(options.ConfigFile))
                     configurationFile = options.ConfigFile;
 
-                //Outputs the FTP password to save in configuration file.
+                //Outputs the encrypted password to save in configuration file.
                 if (!string.IsNullOrEmpty(options.Password))
                 {
                     Console.WriteLine("Encrypted Password is: {0}", Security.EncryptText(options.Password));
@@ -178,7 +172,7 @@ namespace FTPZipAndUpload
                 }
 
                 //FTP UPLOAD ALL ELABORATED FOLDER
-                bool uploadSuccess = FtpService.UploadQueue(queue, verbose, queue.FtpDirectory + nowFileName + "/", queue.FtpServer, queue.FtpUser, queue.FtpPassword);
+                bool uploadSuccess = FtpService.UploadQueue(queue, queue.FtpDirectory + nowFileName + "/", queue.FtpServer, queue.FtpUser, queue.FtpPassword, verbose);
 
                 //DELETE OLDER FOLDERS IF REQUIRED
                 //TODO: Use same session in UploadQueue and in CleanOldRemoteFolders
@@ -191,7 +185,11 @@ namespace FTPZipAndUpload
             }
 
             //LOG
-            Utilities.WriteToFile(string.Format("{0}: Zip & Upload Completed.\n", DateTime.Now));
+            Utilities.WriteToFile(String.Format("Zip & Upload routine completed at: {0}\n", DateTime.Now));
+
+            //SEND MAIL 
+            string subject = String.Format("Zip & Upload routine completed at: {0}", DateTime.Now); //Todo: Send more information in the mail body.
+            MailService.Send("Zip & Upload Executed", subject, verbose);
 
             //DONE
             if (verbose)

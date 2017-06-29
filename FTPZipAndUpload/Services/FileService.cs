@@ -16,7 +16,7 @@ namespace FTPZipAndUpload.Services
         /// <param name="queueItem"></param>
         /// <param name="verbose"></param>
         /// <param name="deleteFile"></param>
-        public static void DeleteFilesInQueue(QueueItem queueItem, bool verbose)
+        public static void DeleteFilesInQueue(QueueItem queueItem, bool verbose = false)
         {
             foreach (var q in queueItem.WorkList)
             {

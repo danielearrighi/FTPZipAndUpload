@@ -17,7 +17,7 @@ namespace FTPZipAndUpload.Services
         /// </summary>
         /// <param name="queue"></param>
         /// <param name="verbose"></param>
-        public static bool ZipFolder(string folder, string destination, string[] exclusionList, bool verbose)
+        public static bool ZipFolder(string folder, string destination, string[] exclusionList, bool verbose = false)
         {
             using (var zip = new ZipFile())
             {
@@ -38,8 +38,6 @@ namespace FTPZipAndUpload.Services
 
                return true;
             }
-
-            return false;
         }
 
         /// <summary>

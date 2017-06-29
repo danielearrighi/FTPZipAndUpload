@@ -17,7 +17,7 @@ namespace FTPZipAndUpload.Services
         /// <param name="ftpServer"></param>
         /// <param name="ftpUser"></param>
         /// <param name="ftpPassword"></param>
-        public static bool UploadQueue(QueueItem queueItem, bool verbose, string ftpFolder, string ftpServer, string ftpUser, string ftpPassword)
+        public static bool UploadQueue(QueueItem queueItem, string ftpFolder, string ftpServer, string ftpUser, string ftpPassword, bool verbose = false)
         {
             bool success = true;
 
@@ -66,7 +66,7 @@ namespace FTPZipAndUpload.Services
                     if (re.InnerException.Message.ToLowerInvariant().IndexOf("file exist", StringComparison.Ordinal) > 0)
                     {
                         //If files exists, change name adding time and try uploading again.
-                        UploadQueue(queueItem, verbose, ftpFolder + DateTime.Now.ToString("HHmmss") + "/", ftpServer, ftpUser, ftpPassword);
+                        UploadQueue(queueItem, ftpFolder + DateTime.Now.ToString("HHmmss") + "/", ftpServer, ftpUser, ftpPassword, verbose);
                     }
                     else
                     {

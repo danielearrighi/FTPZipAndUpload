@@ -93,6 +93,7 @@
     <Compile Include="Infrastructure\Utilities.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\FtpService.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\ZipService.cs" />
   </ItemGroup>
   <ItemGroup>
